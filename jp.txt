@@ -33,6 +33,10 @@ pipeline {
     }
 }
 
+if asked for a webhook select gihub hook in build triggers
+
 modify accordingly project names and github link
 click save
 build now
+
+
