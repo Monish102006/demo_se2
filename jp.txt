@@ -1,0 +1,38 @@
+create new item
+select pipeline 
+paste the script
+
+pipeline {
+    agent any
+    tools{
+        maven 'Maven3.9.16'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                //bat "rmdir  /s /q mavenjava"
+                bat "git clone https://github.com/deepthisagar7/library-management.git"
+                bat "mvn clean -f library-management"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f library-management" 
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f library-management"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f library-management"
+            }
+        }
+    }
+}
+
+modify accordingly project names and github link
+click save
+build now
